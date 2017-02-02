@@ -1,26 +1,9 @@
 <?php
-  // for example your user
-  $user = 'andrewarrow';
-
-  // A token that you could generate from your own github 
-  // go here https://github.com/settings/applications and create a token
-  // then replace the next string
-   //
-  //
-
-  // We generate the url for curl
-  $curl_url = 'https://api.github.com/users/' . $user . '/repos';
-
-  // We generate the header part for the token
-  
-
+   $agent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10; rv:51.0) Gecko/20100101 Firefox/51.0";
   // We make the actual curl initialization
-  $ch = curl_init($curl_url);
-
-  //curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-
-  // We set the right headers: any user agent type, and then the custom token header part that we generated
-  //curl_setopt($ch, CURLOPT_HTTPHEADER, array('User-Agent: Awesome-Octocat-App', $curl_token_auth));
+  $ch = curl_init("https://api.github.com/users/andrewarrow/repos");
+  curl_setopt($ch, CURLOPT_USERAGENT, $agent);
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
   // We execute the curl
   $output = curl_exec($ch);
